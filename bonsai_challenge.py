@@ -39,8 +39,8 @@ import seaborn as sns
 
 
 # Bring in training dataset
-train_data=pd.read_csv("/Users/geoffrey.kip/Downloads/customer_churn_datasets/analyst_train.csv")
-test_data=pd.read_csv("/Users/geoffrey.kip/Downloads/customer_churn_datasets/analyst_test_pred.csv")
+train_data=pd.read_csv("/Users/geoffrey.kip/Projects/customer_churn_ml/train.csv")
+test_data=pd.read_csv("/Users/geoffrey.kip/Projects/customer_churn_ml/test.csv")
 # Check column types
 train_data.dtypes
 test_data.dtypes
