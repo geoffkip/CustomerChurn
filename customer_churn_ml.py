@@ -260,3 +260,6 @@ churn_predictions= model.predict(test_data)
 test_data= test_data.reset_index()
 customer_id=pd.DataFrame(test_data['customerID'])
 final_data=pd.merge(customer_id, pd.DataFrame(churn_predictions), how='left', left_index=True, right_index=True)
+#Export to CSV
+filename= "/Users/geoffrey.kip/Projects/customer_churn_ml/train_predictions.csv"
+final_data.to_csv(filename, sep=',', encoding='utf-8')
