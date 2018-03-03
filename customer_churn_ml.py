@@ -187,6 +187,73 @@ print(classification_report(Y_test, preds))
 score_test = metrics.f1_score(Y_test, preds,
                           pos_label=list(set(Y_test)), average = None)
 
+#==============================================================================
+# #hyperparamater tuning
+# X= X_train.values
+# Y = Y_train.values.reshape(len(Y_train),)
+# 
+# param_test1 = {'n_estimators':range(5,40,5)}
+# gsearch1 = GridSearchCV(estimator = GradientBoostingClassifier(learning_rate=0.1, 
+#                        min_samples_split=10,min_samples_leaf=5,max_depth=8,max_features='sqrt',
+#                        subsample=0.8,random_state=10), 
+#                        param_grid = param_test1, scoring='accuracy',n_jobs=4,iid=False, cv=5)
+# gsearch1.fit(X,Y)
+# gsearch1.grid_scores_, gsearch1.best_params_, gsearch1.best_score_
+# #n_estimators=20
+# 
+# param_test2 = {'max_depth':range(5,16,2), 'min_samples_split':range(200,1001,200)}
+# gsearch2 = GridSearchCV(estimator = GradientBoostingClassifier(learning_rate=0.1, n_estimators=20, max_features='sqrt', subsample=0.8, random_state=10), 
+# param_grid = param_test2, scoring='accuracy',n_jobs=4,iid=False, cv=5)
+# gsearch2.fit(X,Y)
+# gsearch2.grid_scores_, gsearch2.best_params_, gsearch2.best_score_
+# 
+# #max depth= 13 min_samples_split=200
+# 
+# param_test3 = {'min_samples_split':range(1000,2100,200), 'min_samples_leaf':range(30,71,10)}
+# gsearch3 = GridSearchCV(estimator = GradientBoostingClassifier(learning_rate=0.1, n_estimators=20,max_depth=13,max_features='sqrt', subsample=0.8, random_state=10), 
+# param_grid = param_test3, scoring='accuracy',n_jobs=4,iid=False, cv=5)
+# gsearch3.fit(X,Y)
+# gsearch3.grid_scores_, gsearch3.best_params_, gsearch3.best_score_
+# 
+# # min samples leaf= 30 min_samples_split=1000
+# 
+# param_test4 = {'max_features':range(7,20,2)}
+# gsearch4 = GridSearchCV(estimator = GradientBoostingClassifier(learning_rate=0.1, n_estimators=20,max_depth=13, min_samples_split=200, min_samples_leaf=30, subsample=0.8, random_state=10),
+# param_grid = param_test4, scoring='accuracy',n_jobs=4,iid=False, cv=5)
+# gsearch4.fit(X,Y)
+# gsearch4.grid_scores_, gsearch4.best_params_, gsearch4.best_score_
+# 
+# #max_features = 17
+# 
+# # final tree parameters
+# 
+# # n_estimators=20
+# # max_depth= 13
+# # min_samples_split= 1000
+# # min_samples_leaf= 30
+# # max_features= 17
+# 
+# param_test5 = {'subsample':[0.6,0.7,0.75,0.8,0.85,0.9]}
+# gsearch5 = GridSearchCV(estimator = GradientBoostingClassifier(learning_rate=0.1, n_estimators=20,max_depth=13,min_samples_split=1000, min_samples_leaf=30, random_state=10,max_features=17),
+# param_grid = param_test5, scoring='accuracy',n_jobs=4,iid=False, cv=5)
+# gsearch5.fit(X,Y)
+# gsearch5.grid_scores_, gsearch5.best_params_, gsearch5.best_score_
+# 
+# #subsample= 0.85
+# 
+# gbm_tuned_1 = GradientBoostingClassifier(learning_rate=0.1, n_estimators=20,min_samples_leaf=30, min_samples_split=1000,
+#                                          max_depth=13,max_features=17, subsample=0.85, random_state=10)
+# gbm_tuned_1.fit(X_train,Y_train)
+# feat_imp_tuned = pd.Series(gbm_tuned_1.feature_importances_, X_train.columns).sort_values(ascending=False)
+# feat_imp_tuned.plot(kind='bar', title='Feature Importances')
+# plt.ylabel('Feature Importance Score') 
+# 
+# #check accuracy
+# predictions = gbm_tuned_1.predict(X_test)
+# print(accuracy_score(Y_test, predictions))
+# print(confusion_matrix(Y_test, predictions))
+# print(classification_report(Y_test, predictions))
+#==============================================================================
 
 # Predict on the given test set
 churn_predictions= model.predict(test_data)
