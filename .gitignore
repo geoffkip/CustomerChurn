@@ -2,3 +2,15 @@
 *.docx
 
 *.pdf
+
+*.dat
+
+*.log
+
+*.lck
+
+*.txt
+
+*.properties
+
+*.ctrl
